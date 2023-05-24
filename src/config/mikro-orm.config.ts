@@ -1,12 +1,13 @@
 import { Logger } from '@nestjs/common';
 import { TSMigrationGenerator } from '@mikro-orm/migrations';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
+import { Plan } from '@modules/plans/plan.entity';
 import { Options } from '@mikro-orm/core';
 
 const logger = new Logger('MikroORM');
 
 const mikroOrmConfig = {
-  entities: [],
+  entities: [Plan],
   dbName: process.env.DATABASE_NAME,
   type: 'postgresql',
   port: parseInt(process.env.DATABASE_PORT),

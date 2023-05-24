@@ -1,16 +1,15 @@
 import { Logger } from '@nestjs/common';
-import { Options } from '@mikro-orm/core';
-import * as path from 'path';
 import { TSMigrationGenerator } from '@mikro-orm/migrations';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
-import { User } from '../modules/users/user.entity';
+import { Options } from '@mikro-orm/core';
 
 const logger = new Logger('MikroORM');
-const mikroOrmConfig: Options = {
-  entities: [User],
+
+const mikroOrmConfig = {
+  entities: [],
   dbName: process.env.DATABASE_NAME,
   type: 'postgresql',
-  port: Number(process.env.DATABASE_PORT),
+  port: parseInt(process.env.DATABASE_PORT),
   debug: true,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
@@ -20,7 +19,8 @@ const mikroOrmConfig: Options = {
   logger: logger.log.bind(logger),
   metadataProvider: TsMorphMetadataProvider,
   migrations: {
-    path: path.join(__dirname, './migrations'),
+    path: 'dist/database/migrations',
+    pathTs: 'database/migrations',
     glob: '!(*.d).{js,ts}',
     disableForeignKeys: true,
     dropTables: true,
@@ -28,6 +28,14 @@ const mikroOrmConfig: Options = {
     emit: 'ts',
     generator: TSMigrationGenerator,
   },
-};
+  seeder: {
+    path: 'dist/database/seeders',
+    pathTs: 'database/seeders',
+    defaultSeeder: 'DatabaseSeeder',
+    glob: '!(*.d).{js,ts}',
+    emit: 'ts',
+    fileName: (className: string) => className,
+  },
+} as Options;
 
 export default mikroOrmConfig;

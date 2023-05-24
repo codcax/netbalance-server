@@ -10,7 +10,6 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import mikroOrmConfig from './config/mikro-orm.config';
 
 @Module({
   imports: [
@@ -19,11 +18,7 @@ import mikroOrmConfig from './config/mikro-orm.config';
       expandVariables: true,
       envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
-    MikroOrmModule.forRootAsync({
-      useFactory: () => ({
-        ...mikroOrmConfig,
-      }),
-    }),
+    MikroOrmModule.forRoot(),
     PlansModule,
     UsersModule,
     ProfilesModule,

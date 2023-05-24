@@ -26,6 +26,7 @@
     "@mikro-orm/nestjs": "^5.1.8",
     "@mikro-orm/postgresql": "^5.7.9",
     "@mikro-orm/reflection": "^5.7.9",
+    "@mikro-orm/seeder": "^5.7.9",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.2",
     "@nestjs/core": "^9.0.0",
@@ -79,7 +80,7 @@
     "useTsNode": true,
     "configPaths": [
       "./src/config/mikro-orm.config.ts",
-      "./dist/src/mikro-orm.config.js"
+      "./dist/src/config/mikro-orm.config.js"
     ]
   }
 }

@@ -9,7 +9,10 @@ export class PlansService {
     @InjectRepository(Plan)
     private readonly planRepository: EntityRepository<Plan>,
   ) {}
-  async fetchAll(): Promise<Plan[]> {
+  async findAll(): Promise<Plan[]> {
     return this.planRepository.findAll();
+  }
+  async findOne(id: number): Promise<Plan> {
+    return this.planRepository.findOneOrFail({ id: id });
   }
 }

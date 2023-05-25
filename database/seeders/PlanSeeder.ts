@@ -1,6 +1,6 @@
 import type { EntityManager } from '@mikro-orm/core';
 import { Seeder } from '@mikro-orm/seeder';
-import { BasicPlan, FreePlan, ProPlan } from 'src/data/plan';
+import { BasicPlan, FreePlan, ProPlan } from '@data/plan';
 import { Plan } from '@modules/plans/plan.entity';
 
 export class PlanSeeder extends Seeder {

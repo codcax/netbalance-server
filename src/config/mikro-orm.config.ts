@@ -1,4 +1,4 @@
-import { Logger } from '@nestjs/common';
+import { Logger, NotFoundException } from '@nestjs/common';
 import { TSMigrationGenerator } from '@mikro-orm/migrations';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import { Plan } from '@modules/plans/plan.entity';
@@ -36,6 +36,9 @@ const mikroOrmConfig = {
     glob: '!(*.d).{js,ts}',
     emit: 'ts',
     fileName: (className: string) => className,
+  },
+  findOneOrFailHandler: (entityName: string) => {
+    return new NotFoundException(`${entityName} not found!`);
   },
 } as Options;
 

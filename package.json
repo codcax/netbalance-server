@@ -31,6 +31,8 @@
     "@nestjs/config": "^2.3.2",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
     "cross-env": "^7.0.3",
     "pg": "^8.11.0",
     "reflect-metadata": "^0.1.13",
@@ -66,6 +68,10 @@
       "ts"
     ],
     "rootDir": "src",
+    "moduleNameMapper": {
+      "@data/(.*)": "<rootDir>/data/$1",
+      "@modules/(.*)": "<rootDir>/modules/$1"
+    },
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"

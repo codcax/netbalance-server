@@ -10,6 +10,7 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
+import { AuthenticationModule } from './core/authentication/authentication.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
     TransactionsModule,
     CategoriesModule,
     SubscriptionsModule,
+    AuthenticationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

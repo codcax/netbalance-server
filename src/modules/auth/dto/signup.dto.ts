@@ -6,6 +6,7 @@ import {
   MinLength,
 } from 'class-validator';
 import { BannedUsernames } from '@data/banned-words';
+import { MatchPassword } from '@shared/validators/match-password.validator';
 import { DoesNotContainBannedWords } from '@shared/validators/banned-words.validator';
 
 export class SignUpDto {
@@ -24,6 +25,12 @@ export class SignUpDto {
   @IsAlphanumeric()
   @MinLength(8)
   readonly password: string;
+
+  @IsNotEmpty()
+  @IsAlphanumeric()
+  @MinLength(8)
+  @MatchPassword('password')
+  readonly confirm_password: string;
 
   @IsNotEmpty()
   @IsAlpha()

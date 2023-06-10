@@ -7,8 +7,8 @@ import {
 } from 'class-validator';
 
 @ValidatorConstraint({ name: 'bannedWords', async: false })
-export class bannedWordsValidator implements ValidatorConstraintInterface {
-  validate(value: any, args: ValidationArguments): boolean {
+export class BannedWordsValidator implements ValidatorConstraintInterface {
+  validate(value: string, args: ValidationArguments): boolean {
     const [bannedWords] = args.constraints;
     if (!value || !bannedWords || !Array.isArray(bannedWords)) {
       return true;
@@ -29,7 +29,7 @@ export class bannedWordsValidator implements ValidatorConstraintInterface {
 }
 
 export function DoesNotContainBannedWords(
-  bannedWords: string[],
+  property: string[],
   validationOptions?: ValidationOptions,
 ) {
   return function (object: object, propertyName: string) {
@@ -37,9 +37,9 @@ export function DoesNotContainBannedWords(
       name: 'doesNotContainbannedWords',
       target: object.constructor,
       propertyName: propertyName,
-      constraints: [bannedWords],
+      constraints: [property],
       options: validationOptions,
-      validator: bannedWordsValidator,
+      validator: BannedWordsValidator,
     });
   };
 }

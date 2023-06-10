@@ -8,7 +8,7 @@ import {
 import { BannedUsernames } from '@data/banned-words';
 import { DoesNotContainBannedWords } from '@shared/validators/banned-words.validator';
 
-export class SignInDto {
+export class SignUpDto {
   @IsNotEmpty()
   @DoesNotContainBannedWords(BannedUsernames)
   @IsAlphanumeric()

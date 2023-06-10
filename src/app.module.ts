@@ -2,15 +2,15 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PlansModule } from './modules/plans/plans.module';
-import { UsersModule } from './modules/users/users.module';
-import { ProfilesModule } from './modules/profiles/profiles.module';
-import { WalletsModule } from './modules/wallets/wallets.module';
-import { TransactionsModule } from './modules/transactions/transactions.module';
-import { CategoriesModule } from './modules/categories/categories.module';
-import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
+import { PlansModule } from '@modules/plans/plans.module';
+import { UsersModule } from '@modules/users/users.module';
+import { ProfilesModule } from '@modules/profiles/profiles.module';
+import { WalletsModule } from '@modules/wallets/wallets.module';
+import { TransactionsModule } from '@modules/transactions/transactions.module';
+import { CategoriesModule } from '@modules/categories/categories.module';
+import { SubscriptionsModule } from '@modules/subscriptions/subscriptions.module';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { AuthenticationModule } from './core/authentication/authentication.module';
+import { AuthModule } from '@modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -27,7 +27,7 @@ import { AuthenticationModule } from './core/authentication/authentication.modul
     TransactionsModule,
     CategoriesModule,
     SubscriptionsModule,
-    AuthenticationModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -2,13 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PlansModule } from '@modules/plans/plans.module';
-import { UsersModule } from '@modules/users/users.module';
-import { ProfilesModule } from '@modules/profiles/profiles.module';
-import { WalletsModule } from '@modules/wallets/wallets.module';
-import { TransactionsModule } from '@modules/transactions/transactions.module';
-import { CategoriesModule } from '@modules/categories/categories.module';
-import { SubscriptionsModule } from '@modules/subscriptions/subscriptions.module';
+import { PlanModule } from '@modules/plan/plan.module';
+import { UserModule } from '@modules/user/user.module';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { AuthModule } from '@modules/auth/auth.module';
 
@@ -20,13 +15,8 @@ import { AuthModule } from '@modules/auth/auth.module';
       envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
     MikroOrmModule.forRoot(),
-    PlansModule,
-    UsersModule,
-    ProfilesModule,
-    WalletsModule,
-    TransactionsModule,
-    CategoriesModule,
-    SubscriptionsModule,
+    PlanModule,
+    UserModule,
     AuthModule,
   ],
   controllers: [AppController],

@@ -1,4 +1,4 @@
-import { Plan } from '@modules/plans/plan.entity';
+import { Plan } from '@modules/plan/plan.entity';
 
 enum PlanType {
   FREE = 'FREE',

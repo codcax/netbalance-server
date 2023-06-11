@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
-import { PlansController } from './plans.controller';
-import { PlansService } from './plans.service';
+import { PlanController } from './plan.controller';
+import { PlanService } from './plan.service';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Plan } from './plan.entity';
 import { PlanRepository } from './plan.repository';
 
 @Module({
   imports: [MikroOrmModule.forFeature([Plan])],
-  controllers: [PlansController],
-  providers: [PlansService, PlanRepository],
+  controllers: [PlanController],
+  providers: [PlanService, PlanRepository],
 })
-export class PlansModule {}
+export class PlanModule {}

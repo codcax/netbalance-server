@@ -1,19 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PlansController } from './plans.controller';
-import { PlansService } from './plans.service';
+import { PlanController } from './plan.controller';
+import { PlanService } from './plan.service';
 import { FreePlan, BasicPlan, ProPlan } from 'src/constants/plan';
 import { Plan } from './plan.entity';
 
-describe('PlansController', () => {
-  let controller: PlansController;
-  let service: PlansService;
+describe('PlanController', () => {
+  let controller: PlanController;
+  let service: PlanService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [PlansController],
+      controllers: [PlanController],
       providers: [
         {
-          provide: PlansService,
+          provide: PlanService,
           useValue: {
             findAll: jest.fn(),
             findOne: jest.fn(),
@@ -22,8 +22,8 @@ describe('PlansController', () => {
       ],
     }).compile();
 
-    controller = module.get<PlansController>(PlansController);
-    service = module.get<PlansService>(PlansService);
+    controller = module.get<PlanController>(PlanController);
+    service = module.get<PlanService>(PlanService);
   });
 
   it('should be defined', () => {

@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
-import { PlansService } from './plans.service';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { PlanService } from './plan.service';
 import { Plan } from './plan.entity';
 
 @Controller('plans')
-export class PlansController {
-  constructor(private readonly planService: PlansService) {}
+export class PlanController {
+  constructor(private readonly planService: PlanService) {}
 
   @Get()
   async findAll(): Promise<Plan[]> {

@@ -1,7 +1,7 @@
 import type { EntityManager } from '@mikro-orm/core';
 import { Seeder } from '@mikro-orm/seeder';
 import { BasicPlan, FreePlan, ProPlan } from '@constants/plan';
-import { Plan } from '@modules/plans/plan.entity';
+import { Plan } from '@modules/plan/plan.entity';
 
 export class PlanSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {

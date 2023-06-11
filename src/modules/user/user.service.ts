@@ -4,7 +4,7 @@ import { User } from './user.entity';
 import { EntityRepository } from '@mikro-orm/postgresql';
 
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: EntityRepository<User>,

@@ -1,5 +1,5 @@
 import { Factory, Faker } from '@mikro-orm/seeder';
-import { Plan } from '@modules/plans/plan.entity';
+import { Plan } from '@modules/plan/plan.entity';
 
 export class PlanFactory extends Factory<Plan> {
   model = Plan;

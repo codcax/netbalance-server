@@ -9,11 +9,10 @@ import {
 @ValidatorConstraint({ name: 'bannedWords', async: false })
 export class BannedWordsValidator implements ValidatorConstraintInterface {
   validate(value: string, args: ValidationArguments): boolean {
-    const [bannedWords] = args.constraints;
-    if (!value || !bannedWords || !Array.isArray(bannedWords)) {
+    if (!value) {
       return true;
     }
-
+    const [bannedWords] = args.constraints;
     for (const bannedWord of bannedWords) {
       if (value.includes(bannedWord)) {
         return false;

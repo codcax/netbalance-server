@@ -17,12 +17,6 @@ export class User {
   username!: string;
 
   @Property({ nullable: false })
-  first_name!: string;
-
-  @Property({ nullable: false })
-  last_name!: string;
-
-  @Property({ nullable: false })
   email!: string;
 
   @Property({ nullable: false })
@@ -39,5 +33,11 @@ export class User {
   async hashPassword() {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
+  }
+
+  constructor(username: string, email: string, password: string) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
   }
 }

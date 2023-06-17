@@ -13,6 +13,6 @@ export class PlanService {
     return this.planRepository.findAll();
   }
   async findOne(id: number): Promise<Plan> {
-    return this.planRepository.findOneOrFail({ id: id });
+    return this.planRepository.findOne({ id: id });
   }
 }

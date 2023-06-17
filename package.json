@@ -71,8 +71,10 @@
     ],
     "rootDir": "src",
     "moduleNameMapper": {
-      "@data/(.*)": "<rootDir>/data/$1",
-      "@modules/(.*)": "<rootDir>/modules/$1"
+      "@database/(.*)": "<rootDir>/database/$1",
+      "@modules/(.*)": "<rootDir>/modules/$1",
+      "@constants/(.*)": "<rootDir>/constants/$1",
+      "@shared/(.*)": "<rootDir>/shared/$1"
     },
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {

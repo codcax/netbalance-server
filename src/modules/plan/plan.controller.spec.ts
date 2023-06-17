@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlanController } from './plan.controller';
 import { PlanService } from './plan.service';
-import { FreePlan, BasicPlan, ProPlan } from 'src/constants/plan';
+import { FreePlan, BasicPlan, ProPlan } from '@constants/plan';
 import { Plan } from './plan.entity';
 
 describe('PlanController', () => {

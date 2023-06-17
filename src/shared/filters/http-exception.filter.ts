@@ -10,7 +10,8 @@ import { Request, Response } from 'express';
 interface ErrorResponse {
   timestamp: string;
   path?: string;
-  errors: string | Array<string> | object;
+  message: string;
+  errors?: string | Array<string> | object;
 }
 
 @Catch(HttpException)
@@ -21,17 +22,17 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>();
 
     const statusCode = exception.getStatus();
-    const errors = exception.message;
+    const message = exception.message;
 
     const errorResponse: ErrorResponse = {
       timestamp: new Date().toISOString(),
       path: request.url,
-      errors,
+      message,
     };
 
     if (exception instanceof BadRequestException) {
       const exceptionResponse: any = exception.getResponse();
-      errorResponse.errors = exceptionResponse.message;
+      errorResponse.errors = exceptionResponse.errors;
     }
 
     response.status(statusCode).json(errorResponse);

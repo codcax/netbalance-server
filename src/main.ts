@@ -11,7 +11,10 @@ async function bootstrap() {
       whitelist: true,
       transform: true,
       exceptionFactory: (errors: ValidationError[]) =>
-        new BadRequestException(errors),
+        new BadRequestException({
+          message: 'Validation error',
+          errors: errors,
+        }),
     }),
   );
   app.useGlobalFilters(new HttpExceptionFilter());

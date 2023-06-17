@@ -10,6 +10,12 @@ import { UserRepository } from './user.repository';
 
 @Entity({ customRepository: () => UserRepository })
 export class User {
+  constructor(username: string, email: string, password: string) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+  }
+
   @PrimaryKey()
   id!: number;
 
@@ -19,7 +25,7 @@ export class User {
   @Property({ nullable: false })
   email!: string;
 
-  @Property({ nullable: false })
+  @Property({ nullable: false, hidden: true })
   password!: string;
 
   @Property({ onCreate: () => new Date(), onUpdate: () => new Date() })
@@ -33,11 +39,5 @@ export class User {
   async hashPassword() {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
-  }
-
-  constructor(username: string, email: string, password: string) {
-    this.username = username;
-    this.email = email;
-    this.password = password;
   }
 }

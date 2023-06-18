@@ -1,8 +1,7 @@
 import { Entity, Enum, PrimaryKey, Property } from '@mikro-orm/core';
 import PlanType from '@constants/plan';
-import { PlanRepository } from './plan.repository';
 
-@Entity({ customRepository: () => PlanRepository })
+@Entity()
 export class Plan {
   @PrimaryKey()
   id!: number;

@@ -11,8 +11,10 @@ describe('PlanController', () => {
       return Promise.resolve([FreePlan, BasicPlan, ProPlan]);
     }),
 
-    findById: jest.fn().mockImplementation(() => {
-      return Promise.resolve(FreePlan);
+    findById: jest.fn().mockImplementation((id) => {
+      const plans = [FreePlan, BasicPlan, ProPlan];
+      const foundPlan = plans.find((plan) => plan.id === id);
+      return Promise.resolve(foundPlan);
     }),
   };
 
@@ -43,7 +45,7 @@ describe('PlanController', () => {
 
   describe('findById', () => {
     it('should return a plan', async () => {
-      const result = await controller.findOne(1);
+      const result = await controller.findOne(FreePlan.id);
       expect(result).toEqual(FreePlan);
     });
   });

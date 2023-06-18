@@ -6,9 +6,8 @@ import {
   Property,
 } from '@mikro-orm/core';
 import * as bcrypt from 'bcrypt';
-import { UserRepository } from './user.repository';
 
-@Entity({ customRepository: () => UserRepository })
+@Entity()
 export class User {
   constructor(username: string, email: string, password: string) {
     this.username = username;

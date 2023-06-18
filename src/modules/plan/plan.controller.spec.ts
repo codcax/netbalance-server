@@ -42,7 +42,7 @@ describe('PlanController', () => {
   });
 
   describe('findById', () => {
-    it('should return a plan by id', async () => {
+    it('should return a plan', async () => {
       const result = await controller.findOne(1);
       expect(result).toEqual(FreePlan);
     });

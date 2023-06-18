@@ -30,6 +30,10 @@ describe('PlanController', () => {
     expect(controller).toBeDefined();
   });
 
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
   describe('findAll', () => {
     it('should return an array of plans', async () => {
       const mockPlans: Plan[] = [FreePlan, BasicPlan, ProPlan];

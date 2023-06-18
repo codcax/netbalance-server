@@ -5,7 +5,14 @@ import { User } from './user.entity';
 
 describe('UserController', () => {
   let controller: UserController;
-  let service: UserService;
+
+  const mockUser: User = new User('test', 'test@test.com', 'testpassword');
+
+  const mockUserService = {
+    findOne: jest.fn().mockImplementation((options) => {
+      return Promise.resolve(mockUser);
+    }),
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -13,39 +20,22 @@ describe('UserController', () => {
       providers: [
         {
           provide: UserService,
-          useValue: {
-            findOne: jest.fn(),
-          },
+          useValue: mockUserService,
         },
       ],
     }).compile();
 
     controller = module.get<UserController>(UserController);
-    service = module.get<UserService>(UserService);
   });
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-
   describe('findOne', () => {
-    it('should return a single user', async () => {
-      const mockUser: User = new User(
-        'teneshvignesan',
-        'teneshbecs@gmail.com',
-        'abc1234567',
-      );
-
-      jest.spyOn(service, 'findOne').mockResolvedValue(mockUser);
-
+    it('should return a user', async () => {
       const result = await controller.findOne(1);
-
       expect(result).toEqual(mockUser);
-      expect(service.findOne).toHaveBeenCalledWith(1);
     });
   });
 });

@@ -9,7 +9,7 @@ describe('UserController', () => {
   const mockUser: User = new User('test', 'test@test.com', 'testpassword');
 
   const mockUserService = {
-    findOne: jest.fn().mockImplementation((options) => {
+    findById: jest.fn().mockImplementation(() => {
       return Promise.resolve(mockUser);
     }),
   };

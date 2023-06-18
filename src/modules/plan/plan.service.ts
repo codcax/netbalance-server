@@ -14,7 +14,7 @@ export class PlanService {
     return this.planRepository.findAll();
   }
 
-  async findOne(id: number): Promise<Plan> {
+  async findById(id: number): Promise<Plan> {
     return this.planRepository.findOne({ id: id });
   }
 }

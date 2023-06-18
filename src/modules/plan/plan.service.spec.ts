@@ -43,8 +43,8 @@ describe('PlanService', () => {
   });
 
   describe('findOne', () => {
-    it('should return a plan', async () => {
-      const result = await service.findOne(1);
+    it('should return a plan by id', async () => {
+      const result = await service.findById(1);
       expect(result).toEqual(FreePlan);
     });
   });

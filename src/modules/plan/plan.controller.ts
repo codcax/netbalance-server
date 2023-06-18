@@ -13,6 +13,6 @@ export class PlanController {
 
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number): Promise<Plan> {
-    return this.planService.findOne(id);
+    return this.planService.findById(id);
   }
 }

@@ -8,6 +8,6 @@ export class UserController {
 
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number): Promise<User> {
-    return this.userService.findOne(id);
+    return this.userService.findById(id);
   }
 }
